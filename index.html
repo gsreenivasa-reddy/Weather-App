@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Weather</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - Poppins for headings, Lato for body -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Custom Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-gradient-to-br from-blue-400 to-purple-600 min-h-screen flex items-center justify-center p-4 font-lato">
+
+    <div class="w-full max-w-lg mx-auto transform transition-all duration-500 ease-in-out">
+        <div class="bg-white bg-opacity-90 backdrop-filter backdrop-blur-lg rounded-3xl shadow-2xl p-8 sm:p-10 border border-white border-opacity-30">
+            <h1 class="text-4xl font-poppins text-gray-900 text-center mb-8 tracking-wide">Weather Explorer</h1>
+
+            <!-- Search Input and Buttons -->
+            <div class="flex flex-col sm:flex-row gap-4 mb-6">
+                <input type="text" id="location-input" placeholder="Enter city or ZIP code..." class="flex-grow w-full px-5 py-3 bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:ring-3 focus:ring-indigo-400 text-gray-800 placeholder-gray-500 shadow-sm transition-all duration-300">
+                <button id="search-button" class="w-full sm:w-auto px-7 py-3 bg-indigo-600 text-white font-poppins rounded-xl hover:bg-indigo-700 focus:outline-none focus:ring-3 focus:ring-indigo-400 focus:ring-opacity-75 transition-all duration-300 transform hover:scale-105 shadow-md">
+                    <i class="fas fa-search mr-2"></i> Search
+                </button>
+            </div>
+            
+            <!-- Separator -->
+            <div class="flex items-center justify-center my-6">
+                <span class="h-px bg-gray-300 flex-grow"></span>
+                <span class="mx-4 text-sm text-gray-600 font-lato italic">or</span>
+                <span class="h-px bg-gray-300 flex-grow"></span>
+            </div>
+
+            <!-- Geolocation Button -->
+            <button id="geolocation-button" class="w-full px-7 py-3 bg-green-500 text-white font-poppins rounded-xl hover:bg-green-600 focus:outline-none focus:ring-3 focus:ring-green-400 focus:ring-opacity-75 transition-all duration-300 transform hover:scale-105 shadow-md mb-8">
+                <i class="fas fa-location-arrow mr-2"></i> Use My Current Location
+            </button>
+
+            <!-- Loader -->
+            <div id="loader" class="text-center py-10 hidden opacity-0 transition-opacity duration-500 ease-in-out">
+                <div class="loader-spinner mx-auto border-4 border-t-4 border-blue-200 rounded-full w-12 h-12 mb-3"></div>
+                <p class="mt-2 text-gray-600 font-lato text-lg">Fetching celestial data...</p>
+            </div>
+
+            <!-- Error Message with Dismiss Button -->
+            <div id="error-message" class="relative bg-red-100 text-red-700 font-lato p-5 pr-14 rounded-xl shadow-inner hidden opacity-0 transition-opacity duration-500 ease-in-out mb-6">
+                <span id="error-text" class="block text-lg font-semibold"></span>
+                <button id="dismiss-error-button" aria-label="Dismiss error" class="absolute top-1/2 right-4 -translate-y-1/2 text-red-600 hover:text-red-800 transition-colors">
+                    <i class="fas fa-times-circle text-2xl"></i>
+                </button>
+            </div>
+
+            <!-- Weather Display -->
+            <div id="weather-display" class="hidden opacity-0 transform translate-y-5 transition-all duration-700 ease-out">
+                <div class="text-center mb-6">
+                    <h2 id="city-name" class="text-4xl font-poppins text-gray-900 mb-2 leading-tight"></h2>
+                    <p id="weather-description" class="text-xl text-gray-700 capitalize font-lato"></p>
+                </div>
+
+                <div class="flex flex-col sm:flex-row items-center justify-center my-8 bg-gray-50 bg-opacity-70 rounded-2xl p-6 shadow-inner">
+                    <img id="weather-icon" src="" alt="Weather Icon" class="w-32 h-32 sm:w-40 sm:h-40 object-contain drop-shadow-lg transition-transform duration-500 ease-in-out transform hover:scale-110">
+                    <p id="temperature" class="text-8xl font-poppins text-gray-900 ml-0 sm:ml-6 mt-4 sm:mt-0 font-extrabold"></p>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-5 text-center">
+                    <div class="bg-blue-50 bg-opacity-80 p-5 rounded-xl shadow-sm border border-blue-100">
+                        <p class="text-sm text-gray-600 font-lato mb-1">Feels Like</p>
+                        <p id="feels-like" class="text-2xl font-poppins text-indigo-700 font-bold"></p>
+                    </div>
+                    <div class="bg-blue-50 bg-opacity-80 p-5 rounded-xl shadow-sm border border-blue-100">
+                        <p class="text-sm text-gray-600 font-lato mb-1">Humidity</p>
+                        <p id="humidity" class="text-2xl font-poppins text-indigo-700 font-bold"></p>
+                    </div>
+                    <div class="bg-blue-50 bg-opacity-80 p-5 rounded-xl shadow-sm border border-blue-100">
+                        <p class="text-sm text-gray-600 font-lato mb-1">Wind Speed</p>
+                        <p id="wind-speed" class="text-2xl font-poppins text-indigo-700 font-bold"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Custom JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
