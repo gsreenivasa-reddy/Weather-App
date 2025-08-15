@@ -1,0 +1,92 @@
+/* Custom Stylesheet for Weather App */
+
+/* Body and Font Styling */
+body {
+    font-family: 'Lato', sans-serif; /* Default body font */
+    color: #333; /* Dark gray for general text */
+}
+
+/* Headings and specific elements will use Poppins for emphasis */
+.font-poppins {
+    font-family: 'Poppins', sans-serif;
+}
+
+.font-lato {
+    font-family: 'Lato', sans-serif;
+}
+
+/* Transitions for smooth UI updates */
+#weather-display,
+#error-message,
+#loader {
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+
+/* Disabled button styling */
+button:disabled {
+    opacity: 0.6; /* Slightly transparent */
+    cursor: not-allowed; /* Indicate non-interactable */
+    transform: none !important; /* Override hover transform */
+    box-shadow: none !important; /* Remove shadow when disabled */
+}
+
+/* Custom Loader Spinner Animation */
+.loader-spinner {
+    border-top-color: #6366f1; /* Indigo color for the spinner top */
+    animation: spin 1s linear infinite; /* Spin animation */
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Input field focus styling */
+input:focus {
+    border-color: #6366f1; /* Indigo border on focus */
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.4); /* Indigo ring shadow */
+}
+
+/* General styling for better aesthetics */
+.rounded-3xl {
+    border-radius: 1.5rem; /* More rounded corners */
+}
+
+.shadow-2xl {
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); /* Deeper shadow */
+}
+
+.drop-shadow-lg {
+    filter: drop-shadow(0 10px 8px rgba(0, 0, 0, 0.04)) drop-shadow(0 4px 3px rgba(0, 0, 0, 0.1)); /* Icon shadow */
+}
+
+/* Specific styling for the weather icon to ensure it's always centered and looks good */
+#weather-icon {
+    max-width: 100%; /* Ensure it doesn't overflow */
+    height: auto; /* Maintain aspect ratio */
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 640px) {
+    .text-8xl {
+        font-size: 5rem; /* Adjust large temperature font size for mobile */
+    }
+    .text-4xl {
+        font-size: 2.25rem; /* Adjust city name font size for mobile */
+    }
+    .p-8 {
+        padding: 1.5rem; /* Reduce padding on smaller screens */
+    }
+    .sm\:flex-row {
+        flex-direction: column; /* Stack elements vertically on small screens */
+    }
+    .sm\:w-auto {
+        width: 100%; /* Full width buttons on small screens */
+    }
+    .sm\:ml-6 {
+        margin-left: 0; /* Remove left margin for temperature on small screens */
+    }
+    .sm\:mt-0 {
+        margin-top: 1rem; /* Add top margin for temperature on small screens */
+    }
+}
